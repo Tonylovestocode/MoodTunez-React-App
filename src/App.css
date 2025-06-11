@@ -1,0 +1,1523 @@
+body, html, #root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    color: white;
+    text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-top: 2rem;
+    letter-spacing: 1px;
+    font-family: 'Special Gothic Expanded One', sans-serif;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.music-letter {
+    display: inline-block;
+    color: white;
+    transform: translateY(3px);
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
+    font-size: 2rem;
+    margin: 0 0 1px;
+    animation: pulse 2s infinite;
+    position: relative;
+    top: -3px;
+    left: -1px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateY(4px) scale(1);
+    }
+
+    50% {
+        transform: translateY(4px) scale(1.1);
+    }
+
+    100% {
+        transform: translateY(4px) scale(1);
+    }
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+    background: radial-gradient( circle at center, #120459 0%, #1203ad 30%, #0734eb 70%, #56059c 100% );
+    padding: 2rem;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    margin-top: -1.5cm
+}
+
+    .page-container::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        background: radial-gradient( circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70% );
+        border-radius: 50%;
+        z-index: 0;
+    }
+
+.page-title, .mood-card {
+    position: relative;
+    z-index: 1;
+}
+
+.mood-card {
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border-radius: 1rem;
+    padding: 1.22rem;
+    width: 250px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Add these new styles */
+.music-icon-container {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Ensures nothing spills outside the circle */
+}
+
+.music-note-icon {
+    color: #3a0ca3; /* Mid-tone from your gradient */
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    display: block; /* Fixes any inline spacing issues */
+}
+
+.music-icon-container:hover .music-note-icon {
+    color: #7209b7; /* Brighter edge color on hover */
+    transform: scale(1.1);
+}
+
+/* Remove any conflicting .music-icon styles */
+
+
+
+.mood-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4), 0 0 8px rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.5px;
+}
+
+.mood-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 1rem 1.5rem;
+    margin: 0.5rem 0;
+    border-radius: 12px;
+    width: 100%;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4), 0 0 6px rgba(255, 255, 255, 0.15);
+    letter-spacing: 0.3px;
+}
+
+    .mood-button span {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 5px rgba(255, 255, 255, 0.1);
+    }
+
+        .mood-button span:first-child {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+    .mood-button:hover span:first-child {
+        transform: scale(1.1);
+    }
+
+    .mood-button[data-mood="SAD"] {
+        background: linear-gradient(to right, #8A9EFF, #00D4FF);
+    }
+
+    .mood-button[data-mood="HAPPY"] {
+        background: linear-gradient(to right, #00D4FF, #1E3A8A);
+    }
+
+    .mood-button[data-mood="STRESSED"] {
+        background: linear-gradient(to right, #1E3A8A, #6D28D9);
+    }
+
+    .mood-button[data-mood="MOTIVATED"] {
+        background: linear-gradient(to right, #6D28D9, #EC4899);
+    }
+
+    .mood-button:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+.mood-icon {
+    font-size: 1.2rem;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    transition: all 0.2s ease;
+}
+
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.mood-button:hover .mood-icon {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+}
+/* Recommendation Page Styles */
+.recommendation-title {
+    color: white;
+    font-family: 'Special Gothic Expanded One', sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+
+.back-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.2s ease;
+}
+
+    .back-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+.tracks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.track-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.2s ease;
+}
+
+    .track-card:hover {
+        transform: scale(1.02);
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+.album-cover {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.track-info {
+    flex: 1;
+    text-align: left;
+}
+
+    .track-info h3 {
+        margin: 0;
+        color: white;
+        font-size: 1rem;
+    }
+
+    .track-info p {
+        margin: 0.3rem 0;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+    }
+
+.audio-player {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.loading-spinner {
+    width: 25px;
+    height: 25px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spinner 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Add these new styles at the bottom */
+.music-recommendations-container {
+    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.music-recommendations-content {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 80%;
+    max-width: 600px;
+    color: white;
+    text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.track-item {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+    .track-item:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: scale(1.02);
+    }
+
+audio {
+    width: 100%;
+    margin-top: 0.5rem;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+}
+/* Back Button Styles */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10;
+}
+
+    .back-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(-3px);
+    }
+
+    .back-button svg {
+        transition: transform 0.3s ease;
+    }
+
+    .back-button:hover svg {
+        transform: translateX(-3px);
+    }
+/* Playlist Recommendation Styles */
+.playlist-container {
+    background: #000;
+    min-height: 100vh;
+    padding: 2rem;
+    color: white;
+}
+
+.playlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.playlist-title {
+    font-family: 'Special Gothic Expanded One', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+.playlist-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+    .playlist-actions button {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+        .playlist-actions button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+.new-badge {
+    background: #6D28D9;
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    margin-left: 0.5rem;
+}
+
+.track-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+    .track-item:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+.track-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    margin-right: 1rem;
+}
+
+.track-info {
+    flex: 1;
+}
+
+.track-name {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.track-artist {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.like-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+/* Add this to App.css */
+.black-background {
+    background-color: #000;
+    min-height: 100vh;
+}
+
+.music-recommendations-container {
+    background-color: #000;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    padding-top: 80px; /* Give space for the back button */
+}
+
+.playlist-container {
+    background: transparent;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Ensure the back button has proper positioning */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    /* rest of your existing back button styles */
+}
+/* Loading Screen */
+.loading-screen-container {
+    background: radial-gradient( circle at center, #120459 0%, #1203ad 30%, #0734eb 70%, #56059c 100% );
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+    .loading-screen-container::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        background: radial-gradient( circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70% );
+        border-radius: 50%;
+        z-index: 0;
+    }
+
+.loading-screen-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.loading-screen-text {
+    font-family: 'Special Gothic Expanded One', sans-serif;
+    font-size: 2rem;
+    color: white;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.highlight-word {
+    color: #6D28D9;
+    text-shadow: 0 0 10px rgba(109, 40, 217, 0.5);
+}
+
+.music-note-loading {
+    display: inline-block;
+    margin-left: 8px;
+    color: #EC4899;
+    animation: subtle-float 2s ease-in-out infinite;
+}
+
+@keyframes subtle-float {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-40px) rotate(10deg);
+    }
+}
+
+.ellipsis-animation {
+    display: inline-block;
+    width: 1em;
+    animation: pulse-opacity 1.5s infinite;
+}
+
+/* Floating Notes */
+.floating-note {
+    position: absolute;
+    opacity: 0.3;
+    font-size: 1.5rem;
+    pointer-events: none;
+    animation: musicFloat 8s ease-in-out infinite;
+}
+
+@keyframes musicFloat {
+    0% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(-5deg); }
+    50% { transform: translateY(-12px) rotate(0deg); }
+    75% { transform: translateY(-8px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes pulse-opacity {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* Material Icons back button */
+.back-button-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+    .back-button-icon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+    }
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-size: 24px;
+}
+
+.error-message {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 1rem;
+}
+
+    .error-message button {
+        background: #6D28D9;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        cursor: pointer;
+    }
+
+/* Authentication styles */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #4b0082 0%, #9370db 100%);
+  color: white;
+}
+
+.auth-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.auth-card h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.auth-button {
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  background-color: #8a2be2;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.auth-button:hover {
+  background-color: #9932cc;
+}
+
+.auth-button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+}
+
+.auth-footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.auth-link {
+  background: none;
+  border: none;
+  color: #bb86fc;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+}
+
+.auth-error {
+  background-color: rgba(255, 0, 0, 0.2);
+  color: #ff6b6b;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Genre selection styles */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.mood-indicator {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.highlighted-text {
+  color: #bb86fc;
+  font-weight: 700;
+}
+
+.genre-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+}
+
+.genre-title {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.genre-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  height: 100px;
+}
+
+.genre-button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.genre-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+/* Playlist and player styles */
+.playlist-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.playlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.playlist-title {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.playlist-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.action-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.track-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 70px;
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+  transition: background-color 0.3s;
+}
+
+.active-track {
+  background-color: rgba(186, 104, 200, 0.3);
+}
+
+.track-item:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.track-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.track-info {
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.track-name {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-artist {
+  font-size: 14px;
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.play-button, .like-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: white;
+}
+
+.play-button:hover, .like-button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.new-badge {
+  display: inline-block;
+  background-color: #bb86fc;
+  color: #1a1a1a;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin-left: 8px;
+}
+
+/* Music Player */
+.music-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.player-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  margin-right: 12px;
+  object-fit: cover;
+}
+
+.player-track-info {
+  flex-grow: 1;
+}
+
+.player-track-name {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.player-track-artist {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.player-progress {
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #bb86fc;
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.player-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.control-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.control-button:hover {
+  opacity: 1;
+}
+
+.play-pause-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+
+.play-pause-button:hover {
+  opacity: 1;
+}
+
+/* App header styles for optional authentication */
+.app-header {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.user-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-email {
+  font-size: 14px;
+  opacity: 0.8;
+  color: white;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.login-button, .logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  z-index: 100;
+}
+
+.login-button:hover, .logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.back-button-top {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  z-index: 100;
+}
+
+.back-button-top:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Login prompt popup */
+.login-prompt {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(186, 104, 200, 0.9);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 200;
+  animation: slideDown 0.3s forwards, fadeOut 0.3s 4.7s forwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, -50px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Navigation bar styles */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  padding: 12px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-title {
+  color: white;
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.nav-profile {
+  position: relative;
+}
+
+.profile-icon-button {
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-color: rgba(255, 255, 255, 0.1);
+  font-size: 16px;
+}
+
+.profile-icon-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.profile-menu {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background-color: #111;
+  border-radius: 8px;
+  padding: 12px;
+  width: 200px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-menu-email {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  padding: 8px 8px 16px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-menu-item {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 8px;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.profile-menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Add padding to container when nav is present */
+.with-nav {
+  padding-top: 60px !important;
+}
+
+/* Adjust page-container spacing when nav is present */
+.page-container.with-nav {
+  padding-top: 80px;
+  min-height: calc(100vh - 60px);
+}
+
+/* Release year styles */
+.release-year {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 8px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.player-release-year {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+
+/* Mainstream artist styles */
+.mainstream-track {
+  border-left: 3px solid #ffc107;
+}
+
+.mainstream-badge, .player-mainstream-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  background-color: #ffc107;
+  color: #000;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+.player-mainstream-badge {
+  font-size: 10px;
+  padding: 1px 5px;
+}
+
+/* Notice message styles */
+.notice-message {
+    background-color: rgba(30, 30, 30, 0.9);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 10px auto;
+    max-width: 90%;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.notice-message span {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.notice-message p {
+    margin: 5px 0 10px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.notice-message button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: background 0.2s;
+}
+
+.notice-message button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Error Boundary Styles */
+.error-boundary {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+    color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.error-boundary h2 {
+    color: #ff5252;
+    margin-top: 0;
+    font-size: 1.8rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 0.5rem;
+}
+
+.error-boundary p {
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.error-boundary ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.error-boundary li {
+    margin-bottom: 0.5rem;
+}
+
+.error-boundary button {
+    background: #ff5252;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 1rem;
+    margin: 1rem 0;
+}
+
+.error-boundary button:hover {
+    background: #ff3333;
+}
+
+.error-boundary details {
+    margin-top: 1.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.error-boundary summary {
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #ccc;
+    font-weight: bold;
+}
+
+.error-boundary .error-info {
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}
+
+.error-boundary pre {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    margin: 0.5rem 0 1rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #eee;
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Add floating music note animation */
+@keyframes musicFloat {
+  0% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(-5deg); }
+  50% { transform: translateY(-12px) rotate(0deg); }
+  75% { transform: translateY(-8px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes glowRGB {
+  0% { filter: drop-shadow(0 0 8px #ff0000); }
+  20% { filter: drop-shadow(0 0 8px #ff00ff); }
+  40% { filter: drop-shadow(0 0 8px #0000ff); }
+  60% { filter: drop-shadow(0 0 8px #00ffff); }
+  80% { filter: drop-shadow(0 0 8px #00ff00); }
+  100% { filter: drop-shadow(0 0 8px #ff0000); }
+}
+
+.music-symbol {
+  display: inline-block;
+  animation: musicFloat 4s ease-in-out infinite, glowRGB 8s linear infinite;
+  vertical-align: middle;
+  margin-right: 4px;
+  margin-left: 4px;
+  transform-origin: center;
+  position: relative;
+  top: -2px;
+}
